@@ -1,4 +1,5 @@
 import json
+from clustering import cluster 
 
 with open('data/cities.json', 'r') as json_file1:
     city_data = json_file1.read()
@@ -24,3 +25,10 @@ for i,city in enumerate(city_data,1):
 json_str = json.dumps(combined, indent=4)
 with open('combined.json', 'w') as json_file:
     json_file.write(json_str)
+
+data = []
+for city in combined:
+    book_number = combined[city]["books"]
+    population = combined[city]["population"]
+    data.append(tuple([population, book_number]))
+cluster(data)
