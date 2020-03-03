@@ -11,7 +11,7 @@ def read_data(name):
       ps.append(tuple(map(float, line.strip().split(','))))
     return ps
 
-def cluster(ps, N):
+def cluster(ps, N=10):
   k = 3
   m = sample(ps, k)
   n = 0
