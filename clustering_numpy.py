@@ -9,7 +9,7 @@ def read_data(name):
     ps = np.loadtxt(fn,delimiter=",",skiprows=0) 
   return ps
 
-def cluster(ps, N):
+def cluster(ps, N=10):
   k = 3
   rand_arr = np.arange(ps.shape[0])
   np.random.shuffle(rand_arr)
