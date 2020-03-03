@@ -34,14 +34,22 @@ class Points:
       for i in range(k):
         alloc_ps[i] = []
         for j in range(len(ps)):
-            alloc_ps[i] = [p for j, p in enumerate(ps) if alloc[j] == i]
-        new_mean = (sum([a[0] for a in alloc_ps[i]]) / len(alloc_ps[i]), sum([a[1] for a in alloc_ps[i]]) / len(alloc_ps[i]))
+          if alloc[j] == i:
+            alloc_ps[i].append(ps[j])
+            
+        x_mean = 0
+        y_mean = 0
+        for a in alloc_ps[i]:
+          l = len(alloc_ps[i]) 
+          x_mean = x_mean+(a[0])/l
+          y_mean = y_mean+(a[1])/l
+        new_mean = (x_mean,y_mean)
         m[i] = new_mean
       n=n+1
             
     for i in range(k):
-        alloc_ps=[p for j, p in enumerate(ps) if alloc[j] == i]
-        print("Cluster " + str(i) + " is centred at " + str(m[i]) + " and has " + str(len(alloc_ps)) + " points.")
+      alloc_ps=[p for j, p in enumerate(ps) if alloc[j] == i]
+      print("Cluster " + str(i) + " is centred at " + str(m[i]) + " and has " + str(len(alloc_ps)) + " points.")
             
 points = Points('data/samples.csv')
 points.cluster()
