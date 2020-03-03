@@ -1,5 +1,6 @@
 from math import *
 from random import *
+from argparse import ArgumentParser
 
 
 class Points:
@@ -51,5 +52,21 @@ class Points:
       alloc_ps_i =alloc_ps[i]
       print("Cluster " + str(i) + " is centred at " + str(m[i]) + " and has " + str(len(alloc_ps_i)) + " points.")
             
-points = Points('data/samples.csv')
-points.cluster()
+def process():
+  '''
+  The process of command
+  ''' 
+  parser = ArgumentParser(
+    description='Cluster points into 3 classes')
+  parser.add_argument('data')
+  parser.add_argument('--iter', help='iteration times for clustering')
+  args = parser.parse_args()
+    
+  points = Points(args.data)
+  if args.iter:
+    points.cluster(args.iter)
+  else:
+    points.cluster()
+
+if __name__ == "__main__":
+  process()
