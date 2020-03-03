@@ -3,9 +3,11 @@ from random import *
 
 k=3
 
-lines = open('data/samples.csv', 'r').readlines()
-ps=[]
-for line in lines: ps.append(tuple(map(float, line.strip().split(','))))
+file = 'data/samples.csv'
+with open(file) as fn:
+  lines = fn.readlines()
+  ps = []
+  for line in lines: ps.append(tuple(map(float, line.strip().split(','))))
 
 m=[ps[randrange(len(ps))], ps[randrange(len(ps))], ps[randrange(len(ps))]]
 
