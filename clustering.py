@@ -48,8 +48,8 @@ class Points:
       n=n+1
             
     for i in range(k):
-      alloc_ps=[p for j, p in enumerate(ps) if alloc[j] == i]
-      print("Cluster " + str(i) + " is centred at " + str(m[i]) + " and has " + str(len(alloc_ps)) + " points.")
+      alloc_ps_i =alloc_ps[i]
+      print("Cluster " + str(i) + " is centred at " + str(m[i]) + " and has " + str(len(alloc_ps_i)) + " points.")
             
 points = Points('data/samples.csv')
 points.cluster()
